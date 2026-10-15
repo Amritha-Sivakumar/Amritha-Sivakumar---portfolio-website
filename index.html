@@ -561,14 +561,12 @@
 
     .ch h1 {
       font-size: clamp(34px, 5vw, 52px);
-      font-weight: 800;
-      max-width: 16em
+      font-weight: 800
     }
 
     .ch .lead {
       font-size: 20px;
       color: var(--muted);
-      max-width: 32em;
       margin: 16px 0 0
     }
 
@@ -1045,6 +1043,28 @@
       display: block;
       flex: none
     }
+
+    .ghead-title {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 12px
+    }
+
+    .ghead .prototype-link {
+      padding: 0;
+      margin: 0;
+      font-size: 13px;
+      background: transparent;
+      color: var(--accent);
+      border: 0
+    }
+
+    .ghead .prototype-link:hover {
+      background: transparent;
+      color: var(--accent-h);
+      text-decoration: underline
+    }
   </style>
 </head>
 
@@ -1074,10 +1094,10 @@
       email: "amrithasarjun@gmail.com", linkedin: "https://linkedin.com/in/amrithasivakumar", resume: "Amritha-Sivakumar-Resume.pdf",
       behance: "https://www.behance.net/amrithaaj",
       approach: "I ground decisions in research and turn complex problems into intuitive, accessible flows.",
-      highlights: [["7+", "years in visual design"], ["6", "UX and UI case studies"], ["31", "user interviews conducted"]],
+      highlights: [["7+", "years of professional design"], ["100+", "clients across two design roles"], ["6", "UX and UI case studies"], ["31", "user interviews conducted"]],
       specs: [["UI & visual design", "Clean, accessible interfaces built on strong typography and visual structure."], ["UX research & flows", "Interviews, personas and journey maps that turn complex problems into simple flows."], ["Design systems", "Component libraries with clear documentation that keep interfaces consistent."]],
       about: [
-        "I am a product and UI/UX designer blending 7+ years of visual systems maturity with focused interaction design. What began as a fascination with how typography and visual structure guide human perception has evolved into architecting accessible web and mobile products that feel effortless to use.",
+        "I am a product and UI/UX designer blending 7+ years of professional design experience with focused interaction design. What began as a fascination with how typography and visual structure guide human perception has evolved into architecting accessible web and mobile products that feel effortless to use.",
         "I ground decisions in research, untangle ambiguous problems into clear, purposeful flows, and build documented component libraries with enough front-end fluency to keep handoffs seamless.",
         "I’m looking for a UI or Product Design role on a team that cares deeply about design craft, scalable architecture, and building products that make a measurable difference."],
       skills: ["User research", "Wireframing & prototyping", "Visual & UI design", "Design systems", "UX writing (PACE)", "Usability testing"],
@@ -1124,12 +1144,11 @@
         { src: "screens/gpay-07.png", cap: "Mobile recharge" }],
       "Rapido Redesign": [
         { src: "screens/rapido-01.png", cap: "Home page", wide: true, ratio: "1916 / 1656" },
-        { src: "screens/rapido-02.png", cap: "Search location page", wide: true, ratio: "1916 / 1656"  },
-        { src: "screens/rapido-03.png", cap: "Booking page", wide: true, ratio: "1916 / 1656"  },
-        { src: "screens/rapido-04.png", cap: "Waiting for ride", wide: true, ratio: "1916 / 1656"  },
+        { src: "screens/rapido-02.png", cap: "Search location page", wide: true, ratio: "1916 / 1656" },
+        { src: "screens/rapido-03.png", cap: "Booking page", wide: true, ratio: "1916 / 1656" },
+        { src: "screens/rapido-04.png", cap: "Waiting for ride", wide: true, ratio: "1916 / 1656" },
         { src: "screens/rapido-05.png", cap: "Captain arrived: SMS OTP", wide: true, ratio: "1916 / 1656" },
-        { src: "screens/rapido-06.png", cap: "Ride started: track, share, panic button", wide: true, ratio: "1916 / 1656" },
-        ],
+        { src: "screens/rapido-06.png", cap: "Ride started: track, share, panic button", wide: true, ratio: "1916 / 1656" }],
       "Reel Feed Prototype": [
         { src: "screens/reel-01.png", cap: "Reel screen and action bar" },
         { src: "screens/reel-02.png", cap: "Comments panel" },
@@ -1295,7 +1314,7 @@
         preview: "preview_reel.png",
         summary: "A high-fidelity interactive prototype of an Instagram-style reel feed, built to show advanced Figma prototyping and modern app interaction patterns.",
         img: "reel.png",
-        figma: "https://www.figma.com/proto/sjqzZC9gW8jf3GjP512lKw/C4_Project_Designing-Real-World-Interactive-App-Prototype-in-Figma--V2---Copy-?node-id=2015-4422&viewport=703%2C496%2C0.72&t=J82ApmxIjydbVT0D-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2015%3A4422&show-proto-sidebar=1&page-id=2015%3A4389",
+        figma: "",
         role: "UI designer", time: "Self-initiated study (2025)", tools: "Figma (prototyping, variables)",
         note: "Self-initiated prototyping study based on Instagram Reels. Not affiliated with Instagram or Meta. No product changes were made.",
         workedLabel: "What the prototype demonstrates",
@@ -1350,9 +1369,9 @@
       })
     }
     const vis = (p, note) => p.img ? `<img src="${p.img}" alt="${p.title}" style="width:100%;border-radius:18px;display:block" data-fb="hero" data-t="${p.id}">` : `<div class="ph">${p.id}${note ? `<small>Add a hero image: set the img field for this project</small>` : ""}</div>`;
-    const gal = id => {
+    const gal = (id, figma) => {
       const a = SCREENS[id] || []; if (!a.length) return "";
-      return `<section class="gal" id="screens" aria-label="UI screens"><div class="ghead"><div><h2>UI screens</h2><p>Key screens from the final design. Click any screen to enlarge.</p></div><div class="gctl"><button type="button" data-g="-1" aria-label="Scroll screens left">‹</button><button type="button" data-g="1" aria-label="Scroll screens right">›</button></div></div><div class="rail" tabindex="0" aria-label="UI screens carousel">${a.map((s, i) => `<button type="button" class="shot${s.wide ? " wide" : ""}" data-i="${i}" aria-label="Enlarge: ${s.cap}"><span class="frame"${s.ratio ? ` style="aspect-ratio:${s.ratio}"` : ""}>${s.src ? `<img src="${s.src}" alt="${s.cap}" loading="lazy" data-fb="shot">` : `<span class="ph2">Add screen image</span>`}</span><span class="cap">${s.cap}</span></button>`).join("")}</div></section>`
+      return `<section class="gal" id="screens" aria-label="UI screens"><div class="ghead"><div><div class="ghead-title"><h2>UI screens</h2>${figma ? `<a class="btn ghost prototype-link" href="${figma}" target="_blank" rel="noopener">View prototype in Figma</a>` : ""}</div><p>Key screens from the final design. Click any screen to enlarge.</p></div><div class="gctl"><button type="button" data-g="-1" aria-label="Scroll screens left">‹</button><button type="button" data-g="1" aria-label="Scroll screens right">›</button></div></div><div class="rail" tabindex="0" aria-label="UI screens carousel">${a.map((s, i) => `<button type="button" class="shot${s.wide ? " wide" : ""}" data-i="${i}" aria-label="Enlarge: ${s.cap}"><span class="frame"${s.ratio ? ` style="aspect-ratio:${s.ratio}"` : ""}>${s.src ? `<img src="${s.src}" alt="${s.cap}" loading="lazy" data-fb="shot">` : `<span class="ph2">Add screen image</span>`}</span><span class="cap">${s.cap}</span></button>`).join("")}</div></section>`
     };
     function home() {
       app.innerHTML = `<div class="wrap"><div class="hero"><div><h1>Hi, I'm ${ME.name}, <span>${ME.role}</span></h1><p>${ME.headline} ${ME.intro}</p><div class="chip"><i></i>${ME.status} · ${ME.location}</div><div class="btns"><a class="btn" href="#/work">View case studies</a></div></div>
@@ -1370,7 +1389,7 @@
       app.innerHTML = `<div class="wrap"><a class="back" href="#/work">Back to all work</a>
  <div class="ch"><h1>${p.title}</h1><p class="lead">${p.summary}</p>
  <dl class="meta"><div><dt>Role</dt><dd>${p.role}</dd></div><div><dt>Project</dt><dd>${p.time}</dd></div><div><dt>Tools</dt><dd>${p.tools}</dd></div><div><dt>Type</dt><dd>${p.kind}</dd></div></dl>${vis(p, 1)}</div>
- ${gal(p.id)}
+ ${gal(p.id, p.figma)}
  <div class="case"><div class="side">${["problem", "research", "process", "solution", "outcome"].map(s => `<button data-t="${s}">${s[0].toUpperCase() + s.slice(1)}</button>`).join("")}</div>
  <div class="body"><section id="problem"><h2>Problem</h2>${p.problem.map(t => `<p>${t}</p>`).join("")}</section>
  <section id="research"><h2>Research</h2><p>${p.research}</p><h3>Key insights</h3><ul class="l">${L(p.insights)}</ul></section>
